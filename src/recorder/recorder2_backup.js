@@ -7,10 +7,6 @@ import MicrophoneOn                from 'material-ui/svg-icons/av/mic';
 import MicrophoneOff               from 'material-ui/svg-icons/av/stop';
 
 import { ReactMic } from 'react-mic';
-import axios, {post} from 'axios';
-
-// import toBuffer  from 'blob-to-buffer';
-
 // import sampleAudio                 from './sample_audio.webm';
 // import ReactGA                     from 'react-ga';
 
@@ -28,25 +24,12 @@ export default class Demo extends Component {
       blobObject: null,
       isRecording: false
     }
-    // this.post=this.post.bind(this);
-    // this.fileUpload=this.bind(this);
   }
 
 //   componentDidMount() {
 //     ReactGA.pageview(window.location.pathname);
 //   }
 
-//  fileUpload(file){
-//   // const url = 'http://example.com/file-upload';
-//   const formData = new FormData();
-//   formData.append('file',file)
-//   const config = {
-//       headers: {
-//           'content-type': 'multipart/form-data'
-//       }
-//   }
-//     return  post('/api/file', formData,config)
-//   }
   startRecording= () => {
     this.setState({
       record: true,
@@ -67,37 +50,8 @@ export default class Demo extends Component {
 
   onStop= (blobObject) => {
     this.setState({
-      blobURL : blobObject.blobURL,
-      // blobObject.
-      data : blobObject.blob
+      blobURL : blobObject.blobURL
     });
-    // blobObject.data
-
-    // toBuffer(blobObject, function (err, buffer) {
-    //   if (err) throw err
-     
-    //   buffer[0] // => 1
-    //   buffer.readUInt8(1) // => 2
-    // })
-    // console.log(this.state.blobURL+ " this is the URL");
-    // console.log("data "+ this.state.data);
-    // var buffer = new Buffer(this.state.blobURL, "binary");
-    // fileUpload(buffer);
-    const formData = new FormData();
-    // formData.append('file',buffer);
-
-    formData.append('file',this.state.data);
-    formData.append('command','command1');
-    // form
-    const config = {
-        headers: {
-            'content-type': 'multipart/form-data'
-        }
-        // json:true
-    };
-    post('/api/file', formData,config);
-
-    // console.log(blobObject+ " this is the URL");
   }
 
   render() {
@@ -110,12 +64,12 @@ export default class Demo extends Component {
           <ReactMic
             className="oscilloscope"
             record={this.state.record}
-            backgroundColor="#000000"
+            backgroundColor="#FF4081"
             visualSetting="sinewave"
             audioBitsPerSecond= {128000}
             onStop={this.onStop}
             onStart={this.onStart}
-            strokeColor="#ffffff" />
+            strokeColor="#000000" />
           <div>
             <audio ref="audioSource" controls="controls" src={this.state.blobURL}></audio>
           </div>
