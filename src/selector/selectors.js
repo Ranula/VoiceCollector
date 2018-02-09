@@ -9,22 +9,23 @@ require ('./selectors.scss');
 class Selector extends Component {
 
     render() {
-      var names = ['Jake', 'Jon', 'Thruster'];
-      var radioButtons=[];
-      var namesList = names.map(function(name,index){
-      radioButtons.push(<ReversedRadioButton value={name} key={index}>
-                               {name}
-                     </ReversedRadioButton>);
-      })
+      // var names = ['Jake', 'Jon', 'Thruster'];
+      // var radioButtons=[];
+      // var namesList = names.map(function(name,index){
+      // radioButtons.push(<ReversedRadioButton value={name} key={index}>
+      //                          {name}
+      //                </ReversedRadioButton>);
+      // })
       return (
         <div className="selector" >
 
-        <h4>Vertical Radio Buttons</h4>
+        <h4>ගැලපෙන උප විධානයක් තෝරන්න </h4>
         <RadioGroup 
           onChange={ this.props.handleRadioChanges} 
           value={this.props.radioValue}
         >
-        {radioButtons}
+        
+        {this.props.radioButtons}
         </RadioGroup>
 
         </div> 
@@ -33,3 +34,5 @@ class Selector extends Component {
   }
 
   export default Selector;
+
+  // {this.props.radioButtons}

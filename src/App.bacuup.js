@@ -8,16 +8,10 @@ import Selector from './selector/selectors.js';
 // import ReactDOM from 'react-dom';
 import { ReversedRadioButton ,RadioGroup, RadioButton } from 'react-radio-buttons';
 
-import './dropdown.scss';
+// import './dropdown.scss';
 
-
-// const options = [
-//   { value: 'one', label: 'One' },
-//   { value: 'two', label: 'Two' }
-   
-// ]
-// const defaultOption = options[0]
-
+//drop down
+import Dropdown from './dropDown/dropDown.js';
 
 
 class App extends Component {
@@ -27,84 +21,110 @@ class App extends Component {
     this.state ={
       command:'',
       subCommand:'',
-      // stateDefau
-      optionsState:"1",
-      selectedValue:'',
-
-      // radio buttons
-      buttonVal:"apple"
+      radioValue:"",
+      selectValue :"",
+      selectValueAray:""
 
     }
-    this.handleChanges=this.handleChanges.bind(this);
-    this.handleButtonChanges=this.handleButtonChanges.bind(this)
-    this._onSelect = this._onSelect.bind(this)
+    this.loadDropdownItems=this.loadDropdownItems.bind(this);
+    this.render=this.render.bind(this);
+
   }
-  handleChanges(event){
-    this.setState({
-      command:event.target.value,
-      selectedValue:"apple",
-      optionsState:event.target.value,
-      buttonVal:"apple"
-   
+
+  loadRadioItems(){
+
+    var names = ['Jake', 'Jon', 'Thruster'];
+    var radioButtons=[];
+    var namesList = names.map(function(name,index){
+    radioButtons.push(<ReversedRadioButton value={name} key={index}>
+                             {name}
+                   </ReversedRadioButton>);
+    })
+
+    return names;
+  }
+
+  loadDropdownItems(){
+    var names = ['ශේෂය කොපමනද?', 'අවසන් ගනුදෙනු පහ පෙන්වන්න', 'Thruster'];
+    var options=[];
+    var namesList = names.map(function(name,index){
+      options.push(<option value={index} key={index}>
+                             {name}
+                   </option>);
+    })
+    console.log("got excecuted");
     
-  });
-    // RadioGroup.value="";
-    console.log(this.state.command);
-    // console.log()
-    // this.Selector.method();
- }
- handleButtonChanges(event){
-   RadioGroup.value="";
-  console.log("in handleButton")
- }
- _onSelect (option) {
-    console.log('You selected ', option.label)
-    this.setState({selected: option})
-}
+    this.setState({selectValueAray: options});
+
+  }
+
+  handleRadioChanges(e){
+    // this.setState({radioValue: e.target.radioValue});
+    console.log("inside the handleChanges");
+    this.loadDropdownItems;
+    console.log(e);
+  }
+  handleSelectChanges(e){
+    console.log("inside the handle SELECT changes.");
+    console.log(e.target.value);
+
+    var buttons = ['Jake', 'Jon', 'Thruster'];
+    var radioButtons=[];
+    var buttonList = buttons.map(function(button,index){
+    radioButtons.push(<ReversedRadioButton value={button} key={index}>
+                             {button}
+                   </ReversedRadioButton>);
+    })
+  }    
   render() {
-    return (
+    
+      // for the drop down
+      var names = ['ශේෂය කොපමනද?', 'අවසන් ගනුදෙනු පහ පෙන්වන්න', 'Thruster'];
+      var options=[];
+      var namesList = names.map(function(name,index){
+        options.push(<option value={index} key={index}>
+                               {name}
+                     </option>);
+
+      })
+      // this.loadDropdownItems()
+      //for the radio buttons
+      var buttons = ['Jake', 'Jon', 'Thruster'];
+      var radioButtons=[];
+      var buttonList = buttons.map(function(button,index){
+      radioButtons.push(<ReversedRadioButton value={button} key={index}>
+                               {button}
+                     </ReversedRadioButton>);
+      })
+
+      //return function
+     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          {/* <h1 className="App-title">Welcome to React</h1> */}
         </header>
+        <br />
         <p>පහත මෙනුවෙන් විධානයක් තෝරන්න</p>
-        
-          <select onChange={this.handleChanges} >
-            <option value="1">ශේෂය කොපමනද?</option>
-            <option value="2">අවසන් ගනුදෙනු පහ පෙන්වන්න </option>
-            <option value="3">පින් අංකය වෙනස් කරන්න</option>
-            <option value="4">පසු මෙනුවට </option>
-          </select>
+        <br />
+      <Dropdown
+        onLoad={this.loadDropdownItems.bind(this)}
+        handleSelectChanges={this.handleSelectChanges.bind(this)}
+        selectValue={this.state.selectValue}
+        options={options}
 
-       {/* <Dropdown options={options} onChange={this._onSelect} value={defaultOption} placeholder="Select an option" /> */}
+      />
+      <Demo />
+      <Selector 
+          handleRadioChanges={this.handleRadioChanges.bind(this)}
+          radioValue={this.state.radioValue}
+          radioButtons={radioButtons}
+       />
+     
 
-
-
-
-
-        <h4>Vertical Radio Buttons</h4>
-        <RadioGroup name="optionGroup" onChange={ this.handleButtonChanges } selectedvalue={this.state.selectedValue}  value={this.state.buttonVal}>
-          <ReversedRadioButton value="apple">
-            Apple
-          </ReversedRadioButton>
-          <ReversedRadioButton value="orange">
-            Orange
-          </ReversedRadioButton>
-          <ReversedRadioButton value="melon">
-            Melon
-          </ReversedRadioButton>
-        </RadioGroup>
-
-      {/* <Selector/>  */}
-      {/* <Selector onRef={ref => (this.child = ref)}/>    */}
-      {/* <Selector  onRef={ref => (this.child = ref)} />/> imported selector  */}
-      <Demo /> {/*voice Recorder Component */}
       </div>
        
-    );
-  }
+    )}
 }
-// ReactDOM.render(<recorder />, document.getElementById('App'));
+
 
 export default App;
