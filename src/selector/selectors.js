@@ -9,7 +9,7 @@ require ('./selectors.scss');
 class Selector extends Component {
 
     render() {
-      var names = ['Jake', 'Jon', 'Thruster'];
+      var names = ['Elderly', 'Bank'];
       var radioButtons=[];
       var namesList = names.map(function(name,index){
       radioButtons.push(<ReversedRadioButton value={name} key={index}>
@@ -19,7 +19,7 @@ class Selector extends Component {
       return (
         <div className="selector" >
 
-        <h4>Vertical Radio Buttons</h4>
+        <h4>Select a Catagory</h4>
         <RadioGroup 
           onChange={ this.props.handleRadioChanges} 
           value={this.props.radioValue}

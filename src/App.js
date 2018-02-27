@@ -20,43 +20,49 @@ class App extends Component {
     super(props)
     this.state ={
       command:'',
-      subCommand:'',
-      radioValue:"",
-      selectValue :""
-
+      domain:'',
     }
     // this.handleChanges=this.handleChanges.bind(this);
   }
 
+
+
   handleRadioChanges(e){
-    // this.setState({radioValue: e.target.radioValue});
-    console.log("inside the handleChanges");
-    console.log(e);
+    this.setState({
+      domain:e
+    })
   }
+
   handleSelectChanges(e){
-    console.log("inside the handle SELECT changes.");
-    console.log(e.target.value);
-  }    
+    this.setState({
+      command:e.target.value
+    })
+  }
+  
+
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
+        {/* <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-        </header>
+        </header> */}
         <br />
+        <Selector 
+          handleRadioChanges={this.handleRadioChanges.bind(this)}
+          radioValue={this.state.radioValue}
+          
+       />
+       <br/>
         <p>පහත මෙනුවෙන් විධානයක් තෝරන්න</p>
         <br />
       <Dropdown
         handleSelectChanges={this.handleSelectChanges.bind(this)}
-        selectValue={this.state.selectValue}
+        selectedCommand={this.state.command}
+        getDomain = {this.state.domain}
       />
       <Demo />
-      <Selector 
-          handleRadioChanges={this.handleRadioChanges.bind(this)}
-          radioValue={this.state.radioValue}
-       />
      
-
       </div>
        
     )}
