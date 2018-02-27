@@ -12,9 +12,13 @@ class Selector extends Component {
       var names = ['Elderly', 'Bank'];
       var radioButtons=[];
       var namesList = names.map(function(name,index){
-      radioButtons.push(<ReversedRadioButton value={name} key={index}>
-                               {name}
-                     </ReversedRadioButton>);
+      radioButtons.push(
+      <ReversedRadioButton
+      value={name} key={index}
+      pointColor={'black'} 
+      rootColor={'gray'}>
+              {name}
+      </ReversedRadioButton>);
       })
       return (
         <div className="selector" >
@@ -23,6 +27,8 @@ class Selector extends Component {
         <RadioGroup 
           onChange={ this.props.handleRadioChanges} 
           value={this.props.radioValue}
+          horizontal
+          
         >
         {radioButtons}
         </RadioGroup>
