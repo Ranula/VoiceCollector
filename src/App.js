@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import Demo from './recorder/recorder2.js';
 import Selector from './selector/selectors.js';
@@ -54,7 +54,7 @@ class App extends Component {
           
        />
        <br/>
-        <p>පහත මෙනුවෙන් විධානයක් තෝරන්න</p>
+        <p>පහත මෙනුවෙන් විධානයක් dfdf තෝරන්න</p>
         <br />
       <Dropdown
         handleSelectChanges={this.handleSelectChanges.bind(this)}
