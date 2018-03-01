@@ -61,7 +61,10 @@ class App extends Component {
         selectedCommand={this.state.command}
         getDomain = {this.state.domain}
       />
-      <Demo />
+      <Demo 
+        domain ={this.state.domain}
+        command = {this.state.command}
+      />
      
       </div>
        

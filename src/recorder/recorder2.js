@@ -47,7 +47,7 @@ export default class Demo extends Component {
 //   }
 //     return  post('/api/file', formData,config)
 //   }
-  startRecording= () => {
+  startRecording= () => { 
     this.setState({
       record: true,
       isRecording: true
@@ -69,7 +69,7 @@ export default class Demo extends Component {
     this.setState({
       blobURL : blobObject.blobURL,
       // blobObject.
-      data : blobObject.blob
+      data : blobObject.blob,
     });
     // blobObject.data
 
@@ -87,7 +87,8 @@ export default class Demo extends Component {
     // formData.append('file',buffer);
 
     formData.append('file',this.state.data);
-    formData.append('command','command1');
+    formData.append('command',this.props.command);
+    formData.append('domain',this.props.domain);
     // form
     const config = {
         headers: {

@@ -18,7 +18,7 @@ class Dropdown extends Component {
                      </option>);
       })
     }else if (this.props.getDomain === 'Elderly'){
-        var elderlyCommands = ['Im old?', 'old as fuck'];
+        var elderlyCommands = ['Im old', 'old as fuck'];
         var elderlyCommandsList = elderlyCommands.map(function(name,index){
           Options.push(<option value={name} key={index} >
                                  {name}
