@@ -11,23 +11,25 @@ class Dropdown extends Component {
     render() {
       var Options=[];
       if (this.props.getDomain === 'Bank'){
-      var bankCommands = ['ශේෂය කොපමනද?', 'අවසන් ගනුදෙනු පහ පෙන්වන්න'];
+      var bankCommands = ['Requesting account balance', 'Requesting to deposit money', 'Requesting to withdraw money'
+      ,'Bill payment','Money transfer from account to account','Credit card payments.'];
       var bankCommandsList = bankCommands.map(function(name,index){
-        Options.push(<option value={name} key={index} >
+        Options.push(<option value={index} key={index} >
                                {name}
                      </option>);
       })
     }else if (this.props.getDomain === 'Elderly'){
-        var elderlyCommands = ['Im old', 'old as fuck'];
+        var elderlyCommands = ['Turning a switch on.', 'Turning a switch off.','Requesting help'
+        ,'Calling an ambulance','Time'];
         var elderlyCommandsList = elderlyCommands.map(function(name,index){
-          Options.push(<option value={name} key={index} >
+          Options.push(<option value={index} key={index} >
                                  {name}
                        </option>);
         })
     }else{
         var commands = ['Select a Catagory'];
         var bankCommandsList = commands.map(function(name,index){
-          Options.push(<option value={name} key={index} >
+          Options.push(<option value={index} key={index} >
                                  {name}
                        </option>);
         })

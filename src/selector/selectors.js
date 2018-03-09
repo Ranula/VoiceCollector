@@ -19,21 +19,19 @@ class Selector extends Component {
       rootColor={'gray'}>
               {name}
       </ReversedRadioButton>);
-      })
+      });
+
       return (
         <div className="selector" >
 
-        <h4>Select a Catagory</h4>
+        <h4>Select a Doamin</h4>
         <RadioGroup 
-          onChange={ this.props.handleRadioChanges} 
-          value={this.props.radioValue}
+          onChange={ this.props.handleDomainChanges} 
           horizontal
-          
         >
         {radioButtons}
         </RadioGroup>
-
-        </div> 
+        </div>
       );
     }
   }

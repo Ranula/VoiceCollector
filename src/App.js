@@ -3,10 +3,12 @@ import React, { Component } from 'react';
 import './App.css';
 import Demo from './recorder/recorder2.js';
 import Selector from './selector/selectors.js';
+import TextArea from './textArea/textArea.js';
+import {Container,Row,Col} from 'react-grid-system';
 // import Dropdown from 'react-dropdown'
 
 // import ReactDOM from 'react-dom';
-import { ReversedRadioButton ,RadioGroup, RadioButton } from 'react-radio-buttons';
+
 
 // import './dropdown.scss';
 
@@ -21,21 +23,31 @@ class App extends Component {
     this.state ={
       command:'',
       domain:'',
+      capability:'',
     }
     // this.handleChanges=this.handleChanges.bind(this);
   }
 
 
 
-  handleRadioChanges(e){
+  handleDomainChanges(e){
     this.setState({
-      domain:e
+      domain:e,
+      capability:'0'
+    })
+    
+  }
+
+  handleCommandChanges(e){
+    console.log(e);
+    this.setState({
+      command:e
     })
   }
 
   handleSelectChanges(e){
     this.setState({
-      command:e.target.value
+      capability:e.target.value
     })
   }
   
@@ -44,28 +56,52 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+      <Container>
+        <Row>
+          <Col sm={12}>
         {/* <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
         </header> */}
         <br />
         <Selector 
-          handleRadioChanges={this.handleRadioChanges.bind(this)}
-          radioValue={this.state.radioValue}
-          
+          handleDomainChanges={this.handleDomainChanges.bind(this)}
        />
        <br/>
-        <p>පහත මෙනුවෙන් විධානයක් dfdf තෝරන්න</p>
-        <br />
+       </Col>
+       </Row>
+       <Row>
+       <Col sm={12}>
+        <p>පහත මෙනුවෙන් විධානයක් තෝරන්න</p>
       <Dropdown
         handleSelectChanges={this.handleSelectChanges.bind(this)}
-        selectedCommand={this.state.command}
+        selectedCommand={this.state.capability}
         getDomain = {this.state.domain}
       />
+      </Col>
+      <br />
+      </Row>
+      
+      <Row>
+      <Col sm={6}>
+      <p> Pick a command to record  </p>
+      <br/>
+    <TextArea 
+      capability={this.state.capability}
+      handleCommandChanges={this.handleCommandChanges.bind(this)}
+      domain = {this.state.domain}
+    />
+    </Col>
+    <Col sm={6}>
+    <p> Record  </p>
+      <br/>
       <Demo 
         domain ={this.state.domain}
+        capability ={this.state.capability}
         command = {this.state.command}
       />
-     
+      </Col>
+      </Row>
+     </Container>
       </div>
        
     )}
