@@ -1,6 +1,5 @@
 import { ReversedRadioButton ,RadioGroup, RadioButton } from 'react-radio-buttons';
 import React, { Component } from 'react';
-
 // import Radio from './radioButton/radioButton.js';
 
 // require ('./selectors.scss');    
@@ -34,15 +33,23 @@ class Dropdown extends Component {
                        </option>);
         })
     }
+    var slct ={
+        background: 'transparent',
+        width: 268,
+        padding: 5,
+        border: '1px solid black',
+        height: 34,
+      
+    }
       return (
         <div className="dropdown" >
-        <select 
+        <select style={slct}
           onChange={ this.props.handleSelectChanges} 
-          /* value={this.props.selectValue} */
+          value={this.props.selectValue} 
         >
         {Options}
         </select>
-
+        
         </div> 
       );
     }
