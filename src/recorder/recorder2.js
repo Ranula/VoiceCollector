@@ -89,6 +89,7 @@ export default class Demo extends Component {
     formData.append('file',this.state.data);
     formData.append('command',this.props.command);
     formData.append('domain',this.props.domain);
+    formData.append('capability',this.props.capability); 
     // form
     const config = {
         headers: {
