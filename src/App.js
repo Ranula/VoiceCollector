@@ -71,7 +71,7 @@ class App extends Component {
        </Row>
        <Row>
        <Col sm={12}>
-        <p>පහත මෙනුවෙන් විධානයක් තෝරන්න</p>
+        <h4>පහත මෙනුවෙන් විධානයක් තෝරන්න</h4>
       <Dropdown
         handleSelectChanges={this.handleSelectChanges.bind(this)}
         selectedCommand={this.state.capability}
@@ -83,7 +83,7 @@ class App extends Component {
       
       <Row>
       <Col sm={6}>
-      <p> Pick a command to record  </p>
+      <h4> Pick a command to record  </h4>
       <br/>
     <TextArea 
       capability={this.state.capability}
@@ -92,7 +92,7 @@ class App extends Component {
     />
     </Col>
     <Col sm={6}>
-    <p> Record  </p>
+    <h4> Record  </h4>
       <br/>
       <Demo 
         domain ={this.state.domain}
