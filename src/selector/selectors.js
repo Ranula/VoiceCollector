@@ -16,7 +16,8 @@ class Selector extends Component {
       <ReversedRadioButton
       value={name} key={index}
       pointColor={'black'} 
-      rootColor={'gray'}>
+      rootColor={'gray'}
+      padding={10}>
               {name}
       </ReversedRadioButton>);
       });

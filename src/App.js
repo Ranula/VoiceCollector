@@ -95,6 +95,8 @@ class App extends Component {
       domain = {this.state.domain}
     />
     </Col>
+    {/* <Col sm={2}>
+    </Col> */}
     <Col sm={6}>
     <h4> Record  </h4>
       <br/>
