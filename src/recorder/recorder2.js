@@ -1,11 +1,9 @@
 import React, {Component}          from 'react';
 import { render }                  from 'react-dom';
-import { FloatingActionButton,
-        MuiThemeProvider }         from 'material-ui';
+import { FloatingActionButton, MuiThemeProvider }         from 'material-ui';
 // import injectTapEventPlugin        from 'react-tap-event-plugin';
 import MicrophoneOn                from 'material-ui/svg-icons/av/mic';
 import MicrophoneOff               from 'material-ui/svg-icons/av/stop';
-
 import { ReactMic } from 'react-mic';
 import axios, {post} from 'axios';
 
@@ -47,11 +45,33 @@ export default class Demo extends Component {
 //   }
 //     return  post('/api/file', formData,config)
 //   }
-  startRecording= () => { 
+  getdomain = (domain) =>{
+    if (domain ==='Bank'){
+      return [7,6,7,4,6,3];
+    }else{
+      return [3,3,3,6,3];
+    }
+  }
+
+  validator =(domain) =>{
+    let list = this.getdomain(domain);
+    if (list[this.props.capability] < this.props.command){
+      return false;
+    }else{
+      return true;
+    }
+  }
+  startRecording = () => { 
+    if(this.props.command ===''){
+        alert("Select u dumbo")
+    }else if(!this.validator(this.props.domain))
+    {
+      alert("Select u dumbo")
+    }else{
     this.setState({
       record: true,
       isRecording: true
-    });
+    });}
   }
 
   stopRecording= () => {
@@ -98,7 +118,7 @@ export default class Demo extends Component {
         // json:true
     };
     post('/api/file', formData,config);
-
+    alert("Record Uploaded!");
     // console.log(blobObject+ " this is the URL");
   }
 

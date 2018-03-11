@@ -48,7 +48,7 @@ class App extends Component {
   handleSelectChanges(e){
     this.setState({
       capability:e.target.value,
-      command : null
+      // command : null
     })
   }
   refreshing(e){
