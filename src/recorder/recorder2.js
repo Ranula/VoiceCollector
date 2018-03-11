@@ -6,6 +6,7 @@ import MicrophoneOn                from 'material-ui/svg-icons/av/mic';
 import MicrophoneOff               from 'material-ui/svg-icons/av/stop';
 import { ReactMic } from 'react-mic';
 import axios, {post} from 'axios';
+import { withAlert } from 'react-alert'
 
 // import toBuffer  from 'blob-to-buffer';
 
@@ -18,7 +19,7 @@ require ('./styles.scss');
 
 // ReactGA.initialize('UA-98862819-1');
 
-export default class Demo extends Component {
+class Demo extends Component {
   constructor(props){
     super(props);
     this.state = {
@@ -63,10 +64,10 @@ export default class Demo extends Component {
   }
   startRecording = () => { 
     if(this.props.command ===''){
-        alert("Select u dumbo")
+        this.props.alert.show("Select a Command to Record")
     }else if(!this.validator(this.props.domain))
     {
-      alert("Select u dumbo")
+      this.props.alert.show("Select a Command to Record")
     }else{
     this.setState({
       record: true,
@@ -118,7 +119,7 @@ export default class Demo extends Component {
         // json:true
     };
     post('/api/file', formData,config);
-    alert("Record Uploaded!");
+    this.props.alert.success("Record Uploaded!");
     // console.log(blobObject+ " this is the URL");
   }
 
@@ -165,6 +166,6 @@ export default class Demo extends Component {
     );
   }
 }
-// export default Demo;
+export default withAlert(Demo);
 
 // render(<Demo/>, document.querySelector('#demo'))

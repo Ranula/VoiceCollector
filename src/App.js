@@ -5,6 +5,8 @@ import Demo from './recorder/recorder2.js';
 import Selector from './selector/selectors.js';
 import TextArea from './textArea/textArea.js';
 import {Container,Row,Col} from 'react-grid-system';
+import { Provider} from 'react-alert'
+import AlertTemplate from 'react-alert-template-basic';
 // import Dropdown from 'react-dropdown'
 
 // import ReactDOM from 'react-dom';
@@ -58,7 +60,15 @@ class App extends Component {
 
 
   render() {
+    var options = {
+      position: 'top center',
+      timeout: 5000,
+      offset: '10px',
+      transition: 'fade'
+    }
+
     return (
+      <Provider template={AlertTemplate} {...options}>
       <div className="App">
       <Container>
         <Row>
@@ -86,7 +96,7 @@ class App extends Component {
       </Row>
       
       <Row>
-      <Col sm={6}>
+      <Col sm={5}>
       <h4> Pick a command to record  </h4>
       <br/>
     <TextArea 
@@ -95,9 +105,9 @@ class App extends Component {
       domain = {this.state.domain}
     />
     </Col>
-    {/* <Col sm={2}>
-    </Col> */}
-    <Col sm={6}>
+    <Col sm={2}>
+    </Col>
+    <Col sm={5}>
     <h4> Record  </h4>
       <br/>
       <Demo 
@@ -109,6 +119,7 @@ class App extends Component {
       </Row>
      </Container>
       </div>
+      </Provider>
        
     )}
 }
