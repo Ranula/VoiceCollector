@@ -46,10 +46,12 @@ class App extends Component {
   }
 
   handleSelectChanges(e){
+    console.log(this.state.command);
     this.setState({
       capability:e.target.value,
       command : null
     })
+    console.log(this.state.command+"after");
   }
   refreshing(e){
 
@@ -93,6 +95,7 @@ class App extends Component {
       capability={this.state.capability}
       handleCommandChanges={this.handleCommandChanges.bind(this)}
       domain = {this.state.domain}
+      command ={this.state.command}
     />
     </Col>
     <Col sm={6}>
