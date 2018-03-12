@@ -10,23 +10,23 @@ class Dropdown extends Component {
     render() {
       var Options=[];
       if (this.props.getDomain === 'Bank'){
-      var bankCommands = ['Requesting account balance', 'Requesting to deposit money', 'Requesting to withdraw money'
-      ,'Bill payment','Money transfer from account to account','Credit card payments.'];
+      var bankCommands = ['ගිණුමේ ශේෂය විමසීම', 'මුදල් තැම්පත් කිරීමට විමසීම', 'මුදල් ලබා ගැනීමට කිරීමට විමසීම'
+      ,'බිල් ගෙවීම්','ගිණුම් අතර මුදල් හුවමාරු කිරීම','ණයපත් ගෙවීම්'];
       var bankCommandsList = bankCommands.map(function(name,index){
         Options.push(<option value={index} key={index} >
                                {name}
                      </option>);
       })
     }else if (this.props.getDomain === 'Elderly'){
-        var elderlyCommands = ['Turning a switch on.', 'Turning a switch off.','Requesting help'
-        ,'Calling an ambulance','Time'];
+        var elderlyCommands = ['බල්බය දැල්වීම.', 'බල්බය නිවීම.','උදව් ඉල්ලීම'
+        ,'ගිලන් රථයකට කතා කිරීම','වෙලාව විමසීම'];
         var elderlyCommandsList = elderlyCommands.map(function(name,index){
           Options.push(<option value={index} key={index} >
                                  {name}
                        </option>);
         })
     }else{
-        var commands = ['Select a Catagory'];
+        var commands = ['ක්ෂේත්‍රයක් තෝරන්න'];
         var bankCommandsList = commands.map(function(name,index){
           Options.push(<option value={index} key={index} >
                                  {name}

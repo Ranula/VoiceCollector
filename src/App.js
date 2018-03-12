@@ -26,6 +26,7 @@ class App extends Component {
       command:'',
       domain:'',
       capability:'',
+      namesListSinhala:['වැඩිහිටි සුරැකුම් ක්ෂේත්‍රය','බැංකු ක්ෂේත්‍රය']
     }
     // this.handleChanges=this.handleChanges.bind(this);
   }
@@ -81,6 +82,7 @@ class App extends Component {
         <br />
         <Selector 
           handleDomainChanges={this.handleDomainChanges.bind(this)}
+          namesListSinhala={this.state.namesListSinhala}
        />
        <br/>
        </Col>
@@ -88,6 +90,7 @@ class App extends Component {
        <Row>
        <Col sm={12}>
         <h4>පහත මෙනුවෙන් විධානයක් තෝරන්න</h4>
+        <p>ඔබ තෝරාගත් ක්ෂේත්‍රය (domain) යටතේ හඬ පටිගත කිරීමට ඇති විධාන(commands) පහත මෙනුවේ (drop-down) දැක්වේ. ඉන් එකක් තෝරන්න. (ඔබට විධාන කිහිපයක්  සඳහා හඬ පටිගත කල හැකිනම් එය මහත් උපකාරයකි.) </p>
       <Dropdown
         handleSelectChanges={this.handleSelectChanges.bind(this)}
         selectedCommand={this.state.capability}
@@ -99,7 +102,8 @@ class App extends Component {
       
       <Row>
       <Col sm={5}>
-      <h4> Pick a command to record  </h4>
+      <h4> හඬ පටිගත කිරීම සඳහා විධානයක් තෝරන්න </h4>
+      <p>ඔබ තෝරාගත් විධානයහි (command) ස්වරූප(forms) කිහිපයක් පහත දැක්වේ. ඉන් එකක් තෝරන්න. (ඔබට ස්වරූප කිහිපයක්  සඳහා හඬ පටිගත කල හැකිනම් එය මහත් උපකාරයකි.)</p>
       <br/>
     <TextArea 
       capability={this.state.capability}
@@ -111,7 +115,8 @@ class App extends Component {
     <Col sm={2}>
     </Col>
     <Col sm={5}>
-    <h4> Record  </h4>
+    <h4>පටිගත කරන්න</h4>
+    <p>පටිගත කිරීමට 'මයික්‍රොෆෝන්' (microphone) සලකුන ඔබන්න. පටිගත කිරීමෙන් පසු 'අවසන්' (stop) සලකුන ඔබන්න. ඔබගේ හඬ එවිට සටහන් වෙනුඇත.</p>
       <br/>
       <Demo 
         domain ={this.state.domain}
