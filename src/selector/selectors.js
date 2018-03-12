@@ -13,7 +13,7 @@ class Selector extends Component {
       var namesSinhala=['වැඩිහිටි සුරැකුම් ක්ෂේත්‍රය','බැංකු ක්ෂේත්‍රය']
       var radioButtons=[];
       // var namesListSinhala = namesSinhala.map(function(name,index){});
-      var namesList = names.map(function(name,index){
+      var namesList = namesSinhala.map(function(name,index){
       radioButtons.push(
       <ReversedRadioButton
       value={name} key={index}
@@ -21,8 +21,7 @@ class Selector extends Component {
       rootColor={'gray'}
       padding={10}
       >
-       
-      ['වැඩිහිටි සුරැකුම් ක්ෂේත්‍රය','බැංකු ක්ෂේත්‍රය'][{index}]
+      {name}
       </ReversedRadioButton>);
       // {['වැඩිහිටි සුරැකුම් ක්ෂේත්‍රය','බැංකු ක්ෂේත්‍රය'][{index}]}
       });
