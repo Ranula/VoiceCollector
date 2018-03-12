@@ -17,8 +17,8 @@ class Selector extends Component {
       radioButtons.push(
       <ReversedRadioButton
       value={names[index]} key={index}
-      pointColor={'black'} 
-      rootColor={'gray'}
+      pointColor={'#1E90FF'} 
+      rootColor={'black'}
       padding={10}
       >
       {name}

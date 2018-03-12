@@ -124,8 +124,8 @@ class TextArea extends Component {
             radioButtons.push(
             <ReversedRadioButton
             value={index.toString()} key={index}
-            pointColor={'black'} 
-            rootColor={'gray'}>
+            pointColor={'#1E90FF'} 
+            rootColor={'black'}>
                     {name}
             </ReversedRadioButton>);
             });

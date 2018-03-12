@@ -164,15 +164,17 @@ class Demo extends Component {
           <br />
           <br />
           <FloatingActionButton
+            backgroundColor='#1E90FF'
             className="btn"
-            secondary={true}
+            secondary={false}
             disabled={isRecording}
             onClick={this.startRecording}>
             <MicrophoneOn />
           </FloatingActionButton>
           <FloatingActionButton
+            backgroundColor='#1E90FF'
             className="btn"
-            secondary={true}
+            secondary={false}
             disabled={!isRecording}
             onClick={this.stopRecording}>
             <MicrophoneOff />
