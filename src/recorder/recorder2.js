@@ -118,8 +118,13 @@ class Demo extends Component {
         }
         // json:true
     };
-    post('/api/file', formData,config);
-    this.props.alert.success("Record Uploaded!");
+    var self = this;
+    post('/api/file', formData,config).then(function (success) {
+      self.props.alert.success("Record Uploaded!");
+    }).catch(function (error) {
+      self.props.alert.error("Connection Error!");
+    });
+    
     // console.log(blobObject+ " this is the URL");
   }
 
