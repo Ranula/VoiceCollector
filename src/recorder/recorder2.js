@@ -7,6 +7,7 @@ import MicrophoneOff               from 'material-ui/svg-icons/av/stop';
 import { ReactMic } from 'react-mic';
 import axios, {post} from 'axios';
 import { withAlert } from 'react-alert'
+import ReactLoading from 'react-loading';
 
 // import toBuffer  from 'blob-to-buffer';
 
@@ -25,7 +26,8 @@ class Demo extends Component {
     this.state = {
       record: false,
       blobObject: null,
-      isRecording: false
+      isRecording: false,
+      loading:false,
     }
     // this.post=this.post.bind(this);
     // this.fileUpload=this.bind(this);
@@ -121,16 +123,28 @@ class Demo extends Component {
     var self = this;
     post('/api/file', formData,config).then(function (success) {
       self.props.alert.success("Record Uploaded!");
+      self.setState({
+        loading:false
+      });
     }).catch(function (error) {
       self.props.alert.error("Connection Error!");
+      self.setState({
+        loading:false
+      });
     });
-    
+    self.setState({
+      loading:true
+    });
     // console.log(blobObject+ " this is the URL");
   }
 
   render() {
     const { isRecording } = this.state;
-
+    if(this.state.loading){
+      return(
+        <ReactLoading type='bubbles' delay={300} color='771010' height='50' width='50' />
+      );
+    }else{
     return(
       <MuiThemeProvider>
         <div>
@@ -169,6 +183,7 @@ class Demo extends Component {
          </div>
     </MuiThemeProvider>
     );
+  }
   }
 }
 export default withAlert(Demo);
