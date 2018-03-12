@@ -1,13 +1,12 @@
 import React, {Component}          from 'react';
 import { render }                  from 'react-dom';
-import { FloatingActionButton,
-        MuiThemeProvider }         from 'material-ui';
+import { FloatingActionButton, MuiThemeProvider }         from 'material-ui';
 // import injectTapEventPlugin        from 'react-tap-event-plugin';
 import MicrophoneOn                from 'material-ui/svg-icons/av/mic';
 import MicrophoneOff               from 'material-ui/svg-icons/av/stop';
-
 import { ReactMic } from 'react-mic';
 import axios, {post} from 'axios';
+import { withAlert } from 'react-alert'
 
 // import toBuffer  from 'blob-to-buffer';
 
@@ -20,7 +19,7 @@ require ('./styles.scss');
 
 // ReactGA.initialize('UA-98862819-1');
 
-export default class Demo extends Component {
+class Demo extends Component {
   constructor(props){
     super(props);
     this.state = {
@@ -47,11 +46,33 @@ export default class Demo extends Component {
 //   }
 //     return  post('/api/file', formData,config)
 //   }
-  startRecording= () => { 
+  getdomain = (domain) =>{
+    if (domain ==='Bank'){
+      return [7,6,7,4,6,3];
+    }else{
+      return [3,3,3,6,3];
+    }
+  }
+
+  validator =(domain) =>{
+    let list = this.getdomain(domain);
+    if (list[this.props.capability] < this.props.command){
+      return false;
+    }else{
+      return true;
+    }
+  }
+  startRecording = () => { 
+    if(this.props.command ===''){
+        this.props.alert.show("Select a Command to Record")
+    }else if(!this.validator(this.props.domain))
+    {
+      this.props.alert.show("Select a Command to Record")
+    }else{
     this.setState({
       record: true,
       isRecording: true
-    });
+    });}
   }
 
   stopRecording= () => {
@@ -97,8 +118,13 @@ export default class Demo extends Component {
         }
         // json:true
     };
-    post('/api/file', formData,config);
-
+    var self = this;
+    post('/api/file', formData,config).then(function (success) {
+      self.props.alert.success("Record Uploaded!");
+    }).catch(function (error) {
+      self.props.alert.error("Connection Error!");
+    });
+    
     // console.log(blobObject+ " this is the URL");
   }
 
@@ -145,6 +171,6 @@ export default class Demo extends Component {
     );
   }
 }
-// export default Demo;
+export default withAlert(Demo);
 
 // render(<Demo/>, document.querySelector('#demo'))

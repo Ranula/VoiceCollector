@@ -134,7 +134,7 @@ class TextArea extends Component {
       var divStyle ={
         overflow: 'auto',
         height: 300,
-        width: 400,
+        width: 'auto',
         display: 'block',
         margin: 'auto',
         } ;
