@@ -16,7 +16,7 @@ class Selector extends Component {
       var namesList = namesSinhala.map(function(name,index){
       radioButtons.push(
       <ReversedRadioButton
-      value={name} key={index}
+      value={names[index]} key={index}
       pointColor={'black'} 
       rootColor={'gray'}
       padding={10}
