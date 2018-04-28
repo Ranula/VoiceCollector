@@ -7,6 +7,7 @@ import TextArea from './textArea/textArea.js';
 import {Container,Row,Col} from 'react-grid-system';
 import { Provider} from 'react-alert'
 import AlertTemplate from 'react-alert-template-basic';
+import Popup from 'react-popup';
 // import Dropdown from 'react-dropdown'
 
 // import ReactDOM from 'react-dom';
@@ -23,17 +24,20 @@ class App extends Component {
   constructor(props){
     super(props)
     this.state ={
-      command:'',
-      domain:'',
-      capability:'',
-      namesListSinhala:['වැඩිහිටි සුරැකුම් ක්ෂේත්‍රය','බැංකු ක්ෂේත්‍රය']
+      command:'0',
+      domain:'Bank',
+      capability:'0'
+      // namesListSinhala:['වැඩිහිටි සුරැකුම් ක්ෂේත්‍රය','බැංකු ක්ෂේත්‍රය']
     }
     // this.handleChanges=this.handleChanges.bind(this);
   }
 
 
-
+  ComponentDidMount(){
+    
+  }
   handleDomainChanges(e){
+    Popup.alert('I am alert, nice to meet you');
     this.setState({
       domain:e,
       capability:'0'
@@ -80,17 +84,19 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
         </header> */}
         <br />
-        <Selector 
+        {/* <Selector 
           handleDomainChanges={this.handleDomainChanges.bind(this)}
           namesListSinhala={this.state.namesListSinhala}
-       />
+       /> */}
        <br/>
        </Col>
        </Row>
        <Row>
        <Col sm={12}>
         <h4>පහත මෙනුවෙන් විධානයක් තෝරන්න</h4>
-        <p>ඔබ තෝරාගත් ක්ෂේත්‍රය (domain) යටතේ හඬ පටිගත කිරීමට ඇති විධාන(commands) පහත මෙනුවේ (drop-down) දැක්වේ. ඉන් එකක් තෝරන්න. (ඔබට විධාන කිහිපයක්  සඳහා හඬ පටිගත කල හැකිනම් එය මහත් උපකාරයකි.) </p>
+        {/* <p>ඔබ තෝරාගත් ක්ෂේත්‍රය (domain) යටතේ හඬ පටිගත කිරීමට ඇති විධාන(commands) පහත මෙනුවේ (drop-down) දැක්වේ. ඉන් එකක් තෝරන්න. (ඔබට විධාන කිහිපයක්  සඳහා හඬ පටිගත කල හැකිනම් එය මහත් උපකාරයකි.) </p> */}
+        <p>පටිගත කිරීමට ඇති විධාන(commands) පහත මෙනුවේ (drop-down) දැක්වේ. ඉන් එකක් තෝරන්න. (ඔබට විධාන කිහිපයක්  සඳහා හඬ පටිගත කල හැකිනම් එය මහත් උපකාරයකි.) </p>
+
       <Dropdown
         handleSelectChanges={this.handleSelectChanges.bind(this)}
         selectedCommand={this.state.capability}
