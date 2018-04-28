@@ -37,7 +37,7 @@ class App extends Component {
     
   }
   handleDomainChanges(e){
-    Popup.alert('I am alert, nice to meet you');
+    // Popup.alert('I am alert, nice to meet you');
     this.setState({
       domain:e,
       capability:'0'
