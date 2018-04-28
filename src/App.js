@@ -7,7 +7,7 @@ import TextArea from './textArea/textArea.js';
 import {Container,Row,Col} from 'react-grid-system';
 import { Provider} from 'react-alert'
 import AlertTemplate from 'react-alert-template-basic';
-import Popup from 'react-popup';
+// import Popup from 'react-popup';
 // import Dropdown from 'react-dropdown'
 
 // import ReactDOM from 'react-dom';
